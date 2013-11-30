@@ -10,7 +10,7 @@ public class PlayerController : FlyingDeplacements
 	private int nbKeys = 0;
 
 	// Use this for initialization
-	void Start () 
+	protected override void Start () 
 	{
 		Time.timeScale = 1;
 		hpMax = 100;
@@ -19,7 +19,7 @@ public class PlayerController : FlyingDeplacements
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	protected override void Update () 
 	{
 		if (pause)
 			return;
@@ -34,6 +34,12 @@ public class PlayerController : FlyingDeplacements
 		if (other.gameObject.tag == "Key")
 		{
 			nbKeys++;
+			DestroyObject(other.gameObject);
+			return;
+		}
+		else if (other.gameObject.tag == "Carrot")
+		{
+			healthUpdate(20);
 			DestroyObject(other.gameObject);
 			return;
 		}
