@@ -6,8 +6,11 @@ public class PlayerController : FlyingDeplacements
 	// Indique si le jeu est en pause ou non
 	private bool pause = false;
 
+	// Nombre de clés possédé
+	private int nbKeys = 0;
+
 	// Use this for initialization
-	void Start () 
+	protected override void Start () 
 	{
 		Time.timeScale = 1;
 		hpMax = 100;
@@ -16,12 +19,30 @@ public class PlayerController : FlyingDeplacements
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	protected override void Update () 
 	{
 		if (pause)
 			return;
 
 		base.Update();
+	}
+
+	// Test le Trigger avec un objet Key
+	protected override void OnTriggerEnter(Collider other)
+	{
+		base.OnTriggerEnter(other);
+		if (other.gameObject.tag == "Key")
+		{
+			nbKeys++;
+			DestroyObject(other.gameObject);
+			return;
+		}
+		else if (other.gameObject.tag == "Carrot")
+		{
+			healthUpdate(20);
+			DestroyObject(other.gameObject);
+			return;
+		}
 	}
 
 	public void setPause(bool state)
@@ -31,5 +52,10 @@ public class PlayerController : FlyingDeplacements
 			Time.timeScale = 0;
 		else
 			Time.timeScale = 1;
+	}
+
+	public int getNbKeyCollected()
+	{
+		return nbKeys;
 	}
 }
