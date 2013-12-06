@@ -19,7 +19,6 @@ public class HumanoidController : MonoBehaviour
 	// Update is called once per frame
 	protected virtual void Update () 
 	{
-	
 	}
 
 	// Permet de modifier la vie de l'entité
