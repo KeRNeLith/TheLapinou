@@ -18,7 +18,7 @@ public class Menu : MonoBehaviour
 		// on peut modifier la scale des boutons et texture via ces variables pour que la taille des boutons ai la meme taille sur n'importe quel résolution
 	private int screenWidth;
 	private int screnHeight;
-	//private int textureHeight;
+	private int textureHeight;
 	private int textureWidth;
 	private float xPosition;
 	private float yPosition;
@@ -29,9 +29,12 @@ public class Menu : MonoBehaviour
 		screenWidth = Screen.width;
 		screnHeight = Screen.height;
 		textureWidth = playButton.width;
-		//textureHeight = playButton.height;
+		textureHeight = playButton.height;
 		xPosition = ( screenWidth / 2 ) - ( textureWidth / 2 );
-		yPosition = ( screnHeight / 2 );
+		yPosition = ( screnHeight / 2 ) - (textureHeight / 2 );
+
+		print (textureWidth);
+		print (textureHeight);
 	}
 	
 	// Update is called once per frame
@@ -42,24 +45,24 @@ public class Menu : MonoBehaviour
 	
 	void OnGUI ()
 	{
-		GUI.DrawTexture(new Rect (xPosition,yPosition-170,200,80), playButton);
+		GUI.DrawTexture(new Rect (xPosition,yPosition-170,textureWidth,textureHeight), playButton);
 		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-		if (GUI.Button (new Rect (xPosition,200,200,80), "")) 
+		if (GUI.Button (new Rect (xPosition,yPosition-170,textureWidth,textureHeight), "")) 
 		{
 			Application.LoadLevel ("Level001");	// ou une intro ou un menu de selection de niveau
 		}
-		GUI.DrawTexture(new Rect (xPosition,yPosition-70,200,80), OptionsButton);
-		if (GUI.Button (new Rect (xPosition,300,200,80), "")) 
+		GUI.DrawTexture(new Rect (xPosition,yPosition-70,textureWidth,textureHeight), OptionsButton);
+		if (GUI.Button (new Rect (xPosition,yPosition-70,textureWidth,textureHeight), "")) 
 		{
 			Application.LoadLevel ("OptionsMenu");
 		}
-		GUI.DrawTexture(new Rect (xPosition,yPosition+30,200,80), AboutButton);
-		if (GUI.Button (new Rect (xPosition,400,200,80), "")) 
+		GUI.DrawTexture(new Rect (xPosition,yPosition+30,textureWidth,textureHeight), AboutButton);
+		if (GUI.Button (new Rect (xPosition,yPosition+30,textureWidth,textureHeight), "")) 
 		{
 			Application.LoadLevel ("auteurs");
 		}
-		GUI.DrawTexture(new Rect (xPosition,yPosition+130,200,80), QuitButton);
-		if (GUI.Button (new Rect (xPosition,500,200,80), "")) 
+		GUI.DrawTexture(new Rect (xPosition,yPosition+130,textureWidth,textureHeight), QuitButton);
+		if (GUI.Button (new Rect (xPosition,yPosition+130,textureWidth,textureHeight), "")) 
 		{
 			Application.Quit();
 		}
