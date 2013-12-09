@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Menu : MonoBehaviour 
 {
-	// cursor
+	// curseur
 	public Texture2D cursorTexture;
 	private CursorMode cursorMode = CursorMode.Auto;
 	private Vector2 hotSpot = Vector2.zero;
@@ -15,7 +15,7 @@ public class Menu : MonoBehaviour
 	public Texture QuitButton;
 
 	// Meme ratio sur toute résolutions
-		// on peut modifier la scale des boutons et texture via ces variables pour que la taille des boutons ai la meme taille sur n'importe quel résolution
+	// on peut modifier la scale des boutons et texture via ces variables pour que la taille des boutons ai la meme taille sur n'importe quel résolution
 	private int screenWidth;
 	private int screnHeight;
 	private int textureHeight;
@@ -70,14 +70,14 @@ public class Menu : MonoBehaviour
 
 	void Awake() 
 	{
-		// see if we've got menu music still playing
+		// Vérifie si une musique est déjà en train d'etre jouée
 		GameObject GameMusic  = GameObject.Find("GameMusic");
 		if (!GameMusic) 
 		{
-			// kill menu music
+			// Détruit la musique
 			Destroy(GameMusic);
 		}
-		// make sure we survive going to different scenes
+		// Permet de conserver le Menu dans les différentes scènes
 		//DontDestroyOnLoad(gameObject);
 	}
 

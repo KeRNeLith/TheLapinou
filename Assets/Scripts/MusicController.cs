@@ -18,14 +18,14 @@ public class MusicController : MonoBehaviour
 
 	void Awake() 
 	{
-		// see if we've got menu music still playing
+		//Récupère la musique si UnityEditor est actuellement enabled AnimatorTransitionInfo d'etre jouée
 		GameObject MenuMusic  = GameObject.Find("MusicMenu");
 		if (MenuMusic) 
 		{
-			// kill menu music
+			// Détruit la musique
 			Destroy(MenuMusic);
 		}
-		// make sure we survive going to different scenes
+		// Permet de conserver le MusicController dans les différentes scènes
 		//DontDestroyOnLoad(gameObject);
 	}
 }

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// Cette classe permet de sauvegarder des booleens dans les PlayerPrefs
+// Pour sauvegarder les données.
 public class PlayerPrefsX
 {
 	public static void SetBool(string name, bool booleanValue) 

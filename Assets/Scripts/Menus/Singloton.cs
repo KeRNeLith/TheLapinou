@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// Permet de gérer un Singleton, classe ne pouvant etre instancier qu'une seule fois
 public class Singloton : MonoBehaviour {
 	
 	private static Singloton instance = null;

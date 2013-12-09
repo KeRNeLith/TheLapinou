@@ -3,7 +3,7 @@ using System.Collections;
 
 public class mainScene : MonoBehaviour 
 {
-	// cursor
+	// curseur
 	public Texture2D cursorTexture;
 	private CursorMode cursorMode = CursorMode.Auto;
 	private Vector2 hotSpot = Vector2.zero;
@@ -35,7 +35,7 @@ public class mainScene : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		// if espace , enter , echap pressed changer la scene
+		// Si espace , enter , echap sont appuyer pour changer la scene
 		if(Input.GetKeyDown(KeyCode.Escape) ||
 		   Input.GetKeyDown(KeyCode.Space) ||
 		   Input.GetKeyDown(KeyCode.KeypadEnter) ||

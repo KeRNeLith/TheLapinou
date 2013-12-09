@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MenuOptions : MonoBehaviour 
 {
-	// cursor
+	// curseur
 	public Texture2D cursorTexture;
 	private CursorMode cursorMode = CursorMode.Auto;
 	private Vector2 hotSpot = Vector2.zero;
