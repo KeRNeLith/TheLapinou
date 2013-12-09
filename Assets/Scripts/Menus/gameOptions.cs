@@ -15,7 +15,7 @@ public class gameOptions : MonoBehaviour
 	// on peut modifier la scale des boutons et texture via ces variables pour que la taille des boutons ai la meme taille sur n'importe quel résolution
 	private int screenWidth;
 	private int screnHeight;
-	//private int textureHeight;
+	private int textureHeight;
 	private int textureWidth;
 	private float xPosition;
 	private float yPosition;
@@ -26,9 +26,9 @@ public class gameOptions : MonoBehaviour
 		screenWidth = Screen.width;
 		screnHeight = Screen.height;
 		textureWidth = backButton.width;
-		//textureHeight = backButton.height;
+		textureHeight = backButton.height;
 		xPosition = ( screenWidth / 2 ) - ( textureWidth / 2 );
-		yPosition = ( screnHeight / 2 );
+		yPosition = ( screnHeight / 2 ) - ( textureHeight / 2 );
 	}
 	
 	// Update is called once per frame
@@ -40,8 +40,8 @@ public class gameOptions : MonoBehaviour
 
 	void OnGUI () 
 	{		
-		GUI.DrawTexture(new Rect (xPosition,yPosition*2-100,200,80), backButton);
-		if (GUI.Button (new Rect (xPosition,yPosition*2-100,200,80), "")) 
+		GUI.DrawTexture(new Rect (xPosition,yPosition*2-100,textureWidth,textureHeight), backButton);
+		if (GUI.Button (new Rect (xPosition,yPosition*2-100,textureWidth,textureHeight), "")) 
 		{
 			Application.LoadLevel("OptionsMenu");
 		}
