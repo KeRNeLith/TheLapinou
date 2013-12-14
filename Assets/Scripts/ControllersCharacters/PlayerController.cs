@@ -107,6 +107,11 @@ public class PlayerController : HumanoidController
 			DestroyObject(other.gameObject);
 			return;
 		}
+		if (other.gameObject.tag == "Enemy")
+		{
+			setPause(true);
+			print ("lol");
+		}
 	}
 
 	void OnTriggerExit(Collider other) 

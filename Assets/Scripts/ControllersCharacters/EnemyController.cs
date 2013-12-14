@@ -60,10 +60,9 @@ public class EnemyController : HumanoidController
 			sens = (int)(distance/Mathf.Abs(distance));
 
 
-			Debug.Log("ma pos");
-			Debug.Log(transform.position.x);
-			Debug.Log("la tienne");
-			Debug.Log(target.transform.position.x);
+			print("ma pos : "+transform.position.x);
+			print("la tienne : "+target.transform.position.x);
+
 			if (transform.position.x > target.transform.position.x + 1.5f
 			    || transform.position.x < target.transform.position.x - 1.5f)
 			{
