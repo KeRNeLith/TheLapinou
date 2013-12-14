@@ -21,7 +21,7 @@ public class PlayerController : HumanoidController
 	// Permet de régler la vitesse de translation verticale
 	public float verticalMovementSpeed = 30f;
 	// Permet de régler la vitesse des mouvements en vol
-	public float flyingMoveAttenuation = 15f;
+	public float flyingMoveAttenuation = 20f;
 	
 	// Energie pour que le joueur puisse voler
 	protected float energy;
@@ -88,19 +88,20 @@ public class PlayerController : HumanoidController
 			DestroyObject(other.gameObject);
 			return;
 		}
-		else if (other.gameObject.tag == "Carrot")
+		if (other.gameObject.tag == "Carrot")
 		{
 			healthUpdate(20);
 			DestroyObject(other.gameObject);
 			return;
 		}
-		else if (other.gameObject.tag == "Ladder")
+		if (other.gameObject.tag == "Ladder")
 		{
 			inFrontOfLadder = true;
-			gravity /= 2;
+			gravity = 0;
 			return;
 		}
-		else if (other.gameObject.tag == "Battery")
+
+		if (other.gameObject.tag == "Battery")
 		{
 			energyUpdate(updateEnergyPerSecond*2);	// On récupère 2s de vol
 			DestroyObject(other.gameObject);
@@ -113,7 +114,7 @@ public class PlayerController : HumanoidController
 		if (other.gameObject.tag == "Ladder")
 		{
 			inFrontOfLadder = false;
-			gravity *= 2;
+			gravity = 40;	// valeur initiale
 			return;
 		}
 	}
