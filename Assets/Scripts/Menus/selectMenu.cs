@@ -24,10 +24,10 @@ public class selectMenu : MonoBehaviour
 		estBas = false ;
 		estMilieu = true;
 		//levelsFinished = PlayerPrefs.GetInt("LevelsFinished");	// NE PAS SUPPRIMER
-		levelsFinished = 12 ;	// variable de TEST
+		levelsFinished = 8 ;	// variable de TEST
 		mainCameraPos = Camera.main.transform.position;	// position de la camera dans l'espace
 		Camera.main.transform.Rotate (new Vector3(0,0,0) );
-		objectBySide = 8;
+		objectBySide = 9;
 		turningAngleCam = 360 / objectBySide;
 		createLevels();
 
