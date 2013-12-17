@@ -49,7 +49,7 @@ public class Menu : MonoBehaviour
 		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
 		if (GUI.Button (new Rect (xPosition,yPosition-170,textureWidth,textureHeight), "")) 
 		{
-			Application.LoadLevel ("Level001");	// ou une intro ou un menu de selection de niveau
+			Application.LoadLevel ("selectLevel");	// ou une intro ou un menu de selection de niveau
 		}
 		GUI.DrawTexture(new Rect (xPosition,yPosition-70,textureWidth,textureHeight), OptionsButton);
 		if (GUI.Button (new Rect (xPosition,yPosition-70,textureWidth,textureHeight), "")) 
