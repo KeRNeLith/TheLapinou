@@ -1,0 +1,85 @@
+fileFormatVersion: 2
+guid: e9803352de02b05409b0970e693ff8b1
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Bo__te001
+    100002: Bo__te002
+    100004: Ligne001
+    100006: //RootNode
+    100008: Sph__re001
+    100010: Sph__re002
+    400000: Bo__te001
+    400002: Bo__te002
+    400004: Ligne001
+    400006: //RootNode
+    400008: Sph__re001
+    400010: Sph__re002
+    2300000: Bo__te001
+    2300002: Bo__te002
+    2300004: Ligne001
+    2300006: Sph__re001
+    2300008: Sph__re002
+    3300000: Bo__te001
+    3300002: Bo__te002
+    3300004: Ligne001
+    3300006: Sph__re001
+    3300008: Sph__re002
+    4300000: Bo__te001
+    4300002: Sph__re001
+    4300004: Sph__re002
+    4300006: Bo__te002
+    4300008: Ligne001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  userData: 
