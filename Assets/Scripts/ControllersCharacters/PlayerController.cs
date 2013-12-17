@@ -47,7 +47,7 @@ public class PlayerController : HumanoidController
 	// Update is called once per frame
 	void Update () 
 	{
-		if (pause)
+		if (pause && hp > 0)
 			return;
 
 		// Si on a de l'énergie et que l'on demande à voler (espace)
@@ -107,11 +107,6 @@ public class PlayerController : HumanoidController
 			DestroyObject(other.gameObject);
 			return;
 		}
-		if (other.gameObject.tag == "Enemy")
-		{
-			setPause(true);
-			print ("lol");
-		}
 	}
 
 	void OnTriggerExit(Collider other) 
@@ -147,5 +142,10 @@ public class PlayerController : HumanoidController
 	public int getNbKeyCollected()
 	{
 		return nbKeys;
+	}
+
+	public bool getAlive()
+	{
+		return hp > 0;
 	}
 }
