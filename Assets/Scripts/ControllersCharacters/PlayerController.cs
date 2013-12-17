@@ -148,4 +148,14 @@ public class PlayerController : HumanoidController
 	{
 		return hp > 0;
 	}
+
+	public float getEnergy()
+	{
+		return energy;
+	}
+
+	public float getMaxEnergy()
+	{
+		return energyMax;
+	}
 }
