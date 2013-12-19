@@ -17,7 +17,7 @@ public class EnemyController : HumanoidController
 	bool nearPlayer = false;
 
 	// Joueur
-	public PlayerController target;
+	private PlayerController target;
 
 	// Temps écoulé entre chaque attaque
 	private float timeCountAttack = 0;
