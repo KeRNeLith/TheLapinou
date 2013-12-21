@@ -32,7 +32,7 @@ public class selectMenu : MonoBehaviour
 		levelsFinished = 17 ;	// variable de TEST
 		mainCameraPos = Camera.main.transform.position;	// position de la camera dans l'espace
 		Camera.main.transform.Rotate (new Vector3(0,0,0) );
-		objectBySide = 8;
+		objectBySide = 9;
 		turningAngleCam = 360 / objectBySide;
 		createLevels();
 

@@ -31,4 +31,14 @@ public class HumanoidController : MonoBehaviour
 		if (hp < 0)
 			hp = 0;
 	}
+
+	public float getHealth()
+	{
+		return hp;
+	}
+
+	public float getMaxHealth()
+	{
+		return hpMax;
+	}
 }

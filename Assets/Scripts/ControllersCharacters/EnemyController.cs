@@ -13,13 +13,27 @@ public class EnemyController : HumanoidController
 	// Vitesse de l'ennemy
 	float speed = 5f;
 
-	// 
+	// Booleen pour savoir si on est proche du joueur
 	bool nearPlayer = false;
 
 	// Joueur
 	public PlayerController target;
 
-	Vector3 statPos = Vector3.zero;
+	// Temps écoulé entre chaque attaque
+	private float timeCountAttack = 0;
+	// Temps minimum entre chaque attaque
+	private float timeAttack = 1f;
+
+	// Dégats infligés
+	private float damage = -15f;
+
+	// Probabilité de toucher
+	private float attackProbability = 0.7f;
+
+
+	//Vector3 statPos = Vector3.zero;
+
+
 
 
 	// Use this for initialization
@@ -27,6 +41,7 @@ public class EnemyController : HumanoidController
 	{
 		// Récupère l'objet vide devant l'ennemi
 		frontEnnemy = GetComponentInChildren<Transform>().Find("Face");
+		target = FindObjectOfType<PlayerController>();
 	}
 
 	// Update is called once per frame
@@ -56,7 +71,21 @@ public class EnemyController : HumanoidController
 		}
 		else
 		{
-			float distance = target.transform.position.x - transform.position.x;
+			float distance = Vector3.Distance(target.transform.position, transform.position);
+			float distanceOnX = target.transform.position.x - transform.position.x;
+			sens = (int)(distanceOnX/Mathf.Abs(distanceOnX));
+			if (distance <= 0.5f)
+			{
+				transform.position = new Vector3(transform.position.x + sens * speed * Time.deltaTime,
+				                                 transform.position.y,
+				                                 transform.position.z);
+			}
+
+			if (timeCountAttack >= timeAttack)
+			{
+				attack();
+			}
+			/*float distance = target.transform.position.x - transform.position.x;
 			sens = (int)(distance/Mathf.Abs(distance));
 
 
@@ -69,8 +98,9 @@ public class EnemyController : HumanoidController
 				transform.position = new Vector3(transform.position.x + sens * speed * Time.deltaTime,
 				                             transform.position.y,
 				                             transform.position.z);
-			}
+			}*/
 		}
+		timeCountAttack += Time.deltaTime;
 	}
 
 	void changeSens()
@@ -80,13 +110,26 @@ public class EnemyController : HumanoidController
 		transform.forward = -transform.forward;
 	}
 
+	void attack()
+	{
+		if (timeCountAttack >= timeAttack)
+		{
+			if (Random.value <= attackProbability)
+				target.healthUpdate(damage);
+		}
+		timeCountAttack = 0;
+	}
+
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "Player")
 		{
 			nearPlayer = true;
-			statPos = transform.position;
-			return;
+			//statPos = transform.position;
+		}
+		if (other.gameObject.tag == "Enemy")
+		{
+			changeSens();
 		}
 	}
 
