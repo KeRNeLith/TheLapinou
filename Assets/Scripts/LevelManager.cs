@@ -4,13 +4,13 @@ using System.Collections;
 public class LevelManager : MonoBehaviour 
 {
 	// Nombre de clés requises pour le niveau en cours
-	public int nbRequiredKeys = 0;
+	private int nbRequiredKeys = 0;
 
 	// Message à afficher quand on s'approche de la porte
 	public GUIText doorMessage;
 
 	// Joueur
-	public PlayerController player;
+	private PlayerController player;
 
 	// Numéro du level suivant
 	private int nextLevel = 1;
@@ -26,6 +26,8 @@ public class LevelManager : MonoBehaviour
 		// Détermine le nombre de clés requises pour terminer le niveau
 		GameObject[] keys = GameObject.FindGameObjectsWithTag("Key");
 		nbRequiredKeys = keys.Length;
+
+		player = FindObjectOfType(System.Type.GetType("PlayerController")) as PlayerController;
 
 		doorMessage.enabled = false;
 	}

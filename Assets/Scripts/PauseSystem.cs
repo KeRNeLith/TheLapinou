@@ -39,6 +39,9 @@ public class PauseSystem : MonoBehaviour
 			pause = false;
 			player.setPause(pause);
 		}
+
+		if(GUILayout.Button("Recommencer"))
+			Application.LoadLevel(Application.loadedLevel);
 			
 		if(GUILayout.Button("Menu"))
 			Application.LoadLevel("selectLevel");
