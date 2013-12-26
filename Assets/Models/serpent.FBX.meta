@@ -1,40 +1,45 @@
 fileFormatVersion: 2
-guid: 7a46c27a5eaf3684481076c730f206f9
+guid: 8c3d9cb30b61f5a42b51afbcdb03bd0d
 ModelImporter:
   serializedVersion: 15
   fileIDToRecycleName:
     100000: Bo__te001
     100002: Bo__te002
-    100004: Sph__re001
-    100006: Sph__re003
-    100008: Sph__re005
-    100010: Sph__re007
-    100012: //RootNode
+    100004: Ligne001
+    100006: //RootNode
+    100008: Sph__re001
+    100010: Sph__re003
+    100012: Sph__re005
+    100014: Sph__re007
     400000: Bo__te001
     400002: Bo__te002
-    400004: Sph__re001
-    400006: Sph__re003
-    400008: Sph__re005
-    400010: Sph__re007
-    400012: //RootNode
+    400004: Ligne001
+    400006: //RootNode
+    400008: Sph__re001
+    400010: Sph__re003
+    400012: Sph__re005
+    400014: Sph__re007
     2300000: Bo__te001
     2300002: Bo__te002
-    2300004: Sph__re001
-    2300006: Sph__re003
-    2300008: Sph__re005
-    2300010: Sph__re007
+    2300004: Ligne001
+    2300006: Sph__re001
+    2300008: Sph__re003
+    2300010: Sph__re005
+    2300012: Sph__re007
     3300000: Bo__te001
     3300002: Bo__te002
-    3300004: Sph__re001
-    3300006: Sph__re003
-    3300008: Sph__re005
-    3300010: Sph__re007
+    3300004: Ligne001
+    3300006: Sph__re001
+    3300008: Sph__re003
+    3300010: Sph__re005
+    3300012: Sph__re007
     4300000: Bo__te001
     4300002: Sph__re001
     4300004: Sph__re003
     4300006: Sph__re005
     4300008: Sph__re007
     4300010: Bo__te002
+    4300012: Ligne001
     9500000: //RootNode
   materials:
     importMaterials: 1
