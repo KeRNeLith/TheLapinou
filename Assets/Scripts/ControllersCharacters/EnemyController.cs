@@ -30,12 +30,6 @@ public class EnemyController : HumanoidController
 	// Probabilité de toucher
 	private float attackProbability = 0.7f;
 
-
-	//Vector3 statPos = Vector3.zero;
-
-
-
-
 	// Use this for initialization
 	protected override void Start () 
 	{
@@ -122,10 +116,10 @@ public class EnemyController : HumanoidController
 
 	void OnTriggerEnter(Collider other)
 	{
+		Debug.Log(other.gameObject);
 		if (other.gameObject.tag == "Player")
 		{
 			nearPlayer = true;
-			//statPos = transform.position;
 		}
 		if (other.gameObject.tag == "Enemy")
 		{
