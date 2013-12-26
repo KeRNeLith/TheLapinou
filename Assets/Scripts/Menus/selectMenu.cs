@@ -149,7 +149,7 @@ public class selectMenu : MonoBehaviour
 				levelText = Instantiate(Gui3DText, new Vector3(mainCameraPos.x-3 , mainCameraPos.y+(y)-0.5f, mainCameraPos.z+14) , Quaternion.identity) as GameObject;
 				levelText.transform.RotateAround(Camera.main.transform.position,new Vector3(0,i*turningAngleCam,0),i*turningAngleCam);
 			}
-			level.name = "Level00"+i;
+			level.name = "Level_"+i;
 			numLevel = "Level "+i;
 			levelText.GetComponent<TextMesh>().text = numLevel;
 		}
