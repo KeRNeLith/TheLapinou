@@ -47,7 +47,7 @@ public class PlayerController : HumanoidController
 	// Update is called once per frame
 	void Update () 
 	{
-		if (pause && hp > 0)
+		if (pause || hp < 0)
 			return;
 
 		// Si on a de l'énergie et que l'on demande à voler (espace)
