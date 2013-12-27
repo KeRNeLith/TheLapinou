@@ -116,7 +116,6 @@ public class EnemyController : HumanoidController
 
 	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log(other.gameObject);
 		if (other.gameObject.tag == "Player")
 		{
 			nearPlayer = true;

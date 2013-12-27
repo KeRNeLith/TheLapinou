@@ -29,7 +29,7 @@ public class selectMenu : MonoBehaviour
 		estBas = false ;
 		estMilieu = true;
 		//levelsFinished = PlayerPrefs.GetInt("LevelsFinished");	// NE PAS SUPPRIMER
-		levelsFinished = 17 ;	// variable de TEST
+		levelsFinished = 1 ;	// variable de TEST
 		mainCameraPos = Camera.main.transform.position;	// position de la camera dans l'espace
 		Camera.main.transform.Rotate (new Vector3(0,0,0) );
 		objectBySide = 9;
@@ -114,7 +114,7 @@ public class selectMenu : MonoBehaviour
 	void createLevels() 
 	{
 		string numLevel;
-		for(int i = 0; i < levelsFinished ; i++)	// on positionne un objet en tournant autour de la caméra
+		for(int i = 0 ; i < levelsFinished ; i++)	// on positionne un objet en tournant autour de la caméra
 		{
 			int y =-2;
 			if ( i >= objectBySide)// on baisse d'un cranc
@@ -149,8 +149,8 @@ public class selectMenu : MonoBehaviour
 				levelText = Instantiate(Gui3DText, new Vector3(mainCameraPos.x-3 , mainCameraPos.y+(y)-0.5f, mainCameraPos.z+14) , Quaternion.identity) as GameObject;
 				levelText.transform.RotateAround(Camera.main.transform.position,new Vector3(0,i*turningAngleCam,0),i*turningAngleCam);
 			}
-			level.name = "Level_"+i;
-			numLevel = "Level "+i;
+			level.name = "Level_"+(i+1);
+			numLevel = "Level "+(i+1);
 			levelText.GetComponent<TextMesh>().text = numLevel;
 		}
 	}
