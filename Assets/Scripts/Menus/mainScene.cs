@@ -30,6 +30,12 @@ public class mainScene : MonoBehaviour
 		//textureHeight = startButton.height;
 		xPosition = ( screenWidth / 2 ) - ( textureWidth / 2 );
 		yPosition = ( screnHeight / 2 );
+
+		// Calcule le nombre de niveau disponibles
+		int i = 1;
+		while (Application.CanStreamedLevelBeLoaded("Level_" + i))
+			i++;
+		PlayerPrefs.SetInt("nbLevels", (i-1));
 	}
 	
 	// Update is called once per frame

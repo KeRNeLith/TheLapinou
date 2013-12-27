@@ -29,6 +29,9 @@ public class LevelManager : MonoBehaviour
 
 		player = FindObjectOfType(System.Type.GetType("PlayerController")) as PlayerController;
 
+		if (!PlayerPrefsX.GetBool(Application.loadedLevelName, false))
+			PlayerPrefsX.SetBool(Application.loadedLevelName, false);
+
 		doorMessage.enabled = false;
 	}
 	
@@ -63,7 +66,10 @@ public class LevelManager : MonoBehaviour
 				{
 					string levelToLoad = "Level_" + nextLevel;
 					if (Application.CanStreamedLevelBeLoaded(levelToLoad))
+					{
+						PlayerPrefsX.SetBool(Application.loadedLevelName, true);
 						Application.LoadLevel(levelToLoad);
+					}
 					else
 						Application.LoadLevel("selectLevel");
 				}

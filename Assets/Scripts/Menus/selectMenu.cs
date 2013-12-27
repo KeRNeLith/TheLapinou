@@ -28,8 +28,13 @@ public class selectMenu : MonoBehaviour
 		estHaut = false ;
 		estBas = false ;
 		estMilieu = true;
-		//levelsFinished = PlayerPrefs.GetInt("LevelsFinished");	// NE PAS SUPPRIMER
-		levelsFinished = 1 ;	// variable de TEST
+		//PlayerPrefs.DeleteAll();
+		// Calcule le nombre de niveau débloqué
+		int i = 1;
+		while (PlayerPrefsX.GetBool("Level_" + i, false) && i < PlayerPrefs.GetInt("nbLevels"))
+			i++;
+
+		levelsFinished = i;	// Nombre de niveaux débloqués
 		mainCameraPos = Camera.main.transform.position;	// position de la camera dans l'espace
 		Camera.main.transform.Rotate (new Vector3(0,0,0) );
 		objectBySide = 9;
