@@ -47,7 +47,6 @@ public class EnemyController : HumanoidController
 			bool isPlatform = false;
 			RaycastHit rayToDownHit;
 			Ray rayToDown = new Ray(frontEnnemy.position, Vector3.down);
-			
 			if (Physics.Raycast(rayToDown, out rayToDownHit, 1.5f))
 			{
 				// Si on est sur une platform
@@ -79,20 +78,6 @@ public class EnemyController : HumanoidController
 			{
 				attack();
 			}
-			/*float distance = target.transform.position.x - transform.position.x;
-			sens = (int)(distance/Mathf.Abs(distance));
-
-
-			print("ma pos : "+transform.position.x);
-			print("la tienne : "+target.transform.position.x);
-
-			if (transform.position.x > target.transform.position.x + 1.5f
-			    || transform.position.x < target.transform.position.x - 1.5f)
-			{
-				transform.position = new Vector3(transform.position.x + sens * speed * Time.deltaTime,
-				                             transform.position.y,
-				                             transform.position.z);
-			}*/
 		}
 		timeCountAttack += Time.deltaTime;
 	}
