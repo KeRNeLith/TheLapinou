@@ -10,6 +10,8 @@ public class EnemyController : HumanoidController
 	// Sens dans lequel se déplace l'ennemi
 	int sens = 1;
 
+	private float timeToChange = 0f;
+
 	// Vitesse de l'ennemy
 	float speed = 5f;
 
@@ -80,13 +82,18 @@ public class EnemyController : HumanoidController
 			}
 		}
 		timeCountAttack += Time.deltaTime;
+		if (timeToChange >= 0)
+			timeToChange -= Time.deltaTime;
 	}
 
 	void changeSens()
 	{
+		if (timeToChange > 0)
+			return;
 		// Change le sens de déplacement
 		sens = -sens;
 		transform.forward = -transform.forward;
+		timeToChange = 0.5f;
 	}
 
 	void attack()
