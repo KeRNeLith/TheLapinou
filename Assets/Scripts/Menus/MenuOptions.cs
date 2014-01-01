@@ -61,8 +61,8 @@ public class MenuOptions : MonoBehaviour
 		}
 
 
-		GUI.DrawTexture(new Rect (xPosition,yPosition*2-100,textureWidth,textureHeight), backButton);
-		if (GUI.Button (new Rect (xPosition,yPosition*2-100,textureWidth,textureHeight), "")) 
+		GUI.DrawTexture(new Rect (xPosition,yPosition+130,textureWidth,textureHeight), backButton);
+		if (GUI.Button (new Rect (xPosition,yPosition+130,textureWidth,textureHeight), "")) 
 		{
 			Application.LoadLevel("Menu");
 		}

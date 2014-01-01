@@ -35,6 +35,7 @@ public class PlayerController : HumanoidController
 	// Use this for initialization
 	protected override void Start () 
 	{
+		Screen.showCursor = false;
 		Time.timeScale = 1;
 		hpMax = 100;
 		maxTimeFlying = 5;	// 5s de temps de vol maximum

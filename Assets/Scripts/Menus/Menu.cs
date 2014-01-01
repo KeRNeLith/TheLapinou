@@ -35,6 +35,7 @@ public class Menu : MonoBehaviour
 
 		print (textureWidth);
 		print (textureHeight);
+		PlayerPrefs.SetInt("nbLevels",9);
 	}
 	
 	// Update is called once per frame

@@ -4,49 +4,60 @@ using System.Collections;
 public class selectMenu : MonoBehaviour 
 {
 	private int levelsFinished;	// Nombre de niveaux fini
-	private Vector3 mainCameraPos;
-	private int turningAngleCam;
-	private int objectBySide;
+	private Vector3 mainCameraPos;	// position de la camera (x,y,z) dans la scene
+	private int turningAngleCam;	// angle de 360 divisé par le nombre de niveaux total
+	private int objectBySide;	// Nombre de niveaux par étage ( 3 etages max de prévu, etage = voir CreateLevels() )
 
+	// Gestion des positions et droits de la caméra
 	private bool estHaut;
 	private bool estMilieu;
 	private bool estBas;
 	private bool peutTourner;
 
+	// Affichage des "panneaux" Level_...
 	public GameObject platform; 
 	private GameObject level;
 	public GameObject Gui3DText;
 	private GameObject levelText;
 
-	// souris
+	// Gestion de la colision de la souris avec un objet
 	private RaycastHit hitInfo;
 
 	// Use this for initialization
 	void Start ()
 	{
+		// La caméra a un angle de (0,0,0) elle est donc au milieu
 		peutTourner = true;
 		estHaut = false ;
 		estBas = false ;
 		estMilieu = true;
-		//PlayerPrefs.DeleteAll();
+
 		// Calcule le nombre de niveau débloqué
 		int i = 1;
 		while (PlayerPrefsX.GetBool("Level_" + i, false) && i < PlayerPrefs.GetInt("nbLevels"))
 			i++;
 
 		levelsFinished = i;	// Nombre de niveaux débloqués
-		mainCameraPos = Camera.main.transform.position;	// position de la camera dans l'espace
-		Camera.main.transform.Rotate (new Vector3(0,0,0) );
-		objectBySide = 9;
-		turningAngleCam = 360 / objectBySide;
-		createLevels();
 
+		mainCameraPos = Camera.main.transform.position;	// position de la camera dans l'espace
+
+		Camera.main.transform.Rotate (new Vector3(0,0,0) );	// pour obliger la caméra à etre en angle (0,0,0)
+
+		objectBySide = PlayerPrefs.GetInt("nbLevels");	// on récupère la valeur initialisé dans la scene Menu
+
+		turningAngleCam = 360 / objectBySide;	// on découpe notre angle de 360
+
+		createLevels();	// Creer la scene dynamiquement
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		// touche echap permet un retour à la scene Menu
+		if (Input.GetKeyDown("escape"))
+			Application.LoadLevel("Menu");
 
+		// Permet de savoir l'objet qui est en colision avec le curseur et si un clic se fait, charge la scene du meme nom
 		if( Physics.Raycast( Camera.main.ScreenPointToRay( Input.mousePosition ), out hitInfo ) )
 		{
 			Debug.Log( "mouse is over object " + hitInfo.collider.name );
@@ -54,6 +65,13 @@ public class selectMenu : MonoBehaviour
 			if(Input.GetMouseButtonDown(0))
 				Application.LoadLevel(levelName);
 		} 
+
+
+		////////////////////////////////////
+		/// 
+		/// GESTION DE LA ROTATION CAMERA
+		/// 
+		/// ////////////////////////////////
 
 		// Eviter d'avoir une vue de travers
 		if(!estMilieu)
@@ -79,13 +97,11 @@ public class selectMenu : MonoBehaviour
 				return;
 			if(estMilieu)
 			{
-				//Camera.main.transform.Rotate (new Vector3(-90,0,0) );
 				estHaut = true;
 				estMilieu = false;
 			}
 			if (estBas)
 			{
-				//Camera.main.transform.Rotate (new Vector3(-90,0,0) );
 				estHaut = false;
 				estMilieu = true;
 				estBas =false;
@@ -105,7 +121,6 @@ public class selectMenu : MonoBehaviour
 			}
 			if(estHaut)
 			{
-				//Camera.main.transform.Rotate (new Vector3(90,0,0) );
 				estMilieu=true;
 				estHaut=false;
 				estBas = false;
@@ -122,16 +137,16 @@ public class selectMenu : MonoBehaviour
 		for(int i = 0 ; i < levelsFinished ; i++)	// on positionne un objet en tournant autour de la caméra
 		{
 			int y =-2;
-			if ( i >= objectBySide)// on baisse d'un cranc
+			if ( i >= objectBySide)	// on baisse d'un cranc (2e etage)
 			{
 				y +=2;
-				if(i >= objectBySide*2)// on obtient un troisième rang
+				if(i >= objectBySide*2)	// on baisse encore (3e etage)
 				{
 					y+=2;
-					// code
+					// instancie un gameobject avec un prefab en se centrant autour(rotation) de la camera
 					level = Instantiate(platform, new Vector3(mainCameraPos.x , mainCameraPos.y+(y), mainCameraPos.z+10) , Quaternion.identity) as GameObject;
 					level.transform.RotateAround(Camera.main.transform.position,new Vector3(0,i*turningAngleCam,0),i*turningAngleCam);
-
+					// fait la meme chose avec un Gui3DText vide
 					levelText = Instantiate(Gui3DText, new Vector3(mainCameraPos.x-3 , mainCameraPos.y+(y)+1.5f, mainCameraPos.z+14) , Quaternion.identity) as GameObject;
 					levelText.transform.RotateAround(Camera.main.transform.position,new Vector3(0,i*turningAngleCam,0),i*turningAngleCam);
 				}
@@ -154,6 +169,8 @@ public class selectMenu : MonoBehaviour
 				levelText = Instantiate(Gui3DText, new Vector3(mainCameraPos.x-3 , mainCameraPos.y+(y)-0.5f, mainCameraPos.z+14) , Quaternion.identity) as GameObject;
 				levelText.transform.RotateAround(Camera.main.transform.position,new Vector3(0,i*turningAngleCam,0),i*turningAngleCam);
 			}
+			// on donne au gameobject son nom (qui sera utilisé lors du clic/position souris pour charger un level)
+			// et on applique le texte au Gui3DText
 			level.name = "Level_"+(i+1);
 			numLevel = "Level "+(i+1);
 			levelText.GetComponent<TextMesh>().text = numLevel;

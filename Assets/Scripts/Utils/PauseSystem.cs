@@ -30,7 +30,13 @@ public class PauseSystem : MonoBehaviour
 	void OnGUI()
 	{
 		if(!pause)
+		{
+			// désactive le curseur durant le level
+			Screen.showCursor = false;
 			return;
+		}
+		// active le curseur durant le menu de pause
+		Screen.showCursor = true;
 
 		GUILayout.BeginArea(new Rect(Screen.width/2-50, Screen.height/2-50, 100, 100));
 			
