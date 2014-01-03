@@ -15,6 +15,9 @@ public class LevelManager : MonoBehaviour
 	// Numéro du level suivant
 	private int nextLevel = 1;
 
+	// Musique du niveau
+	public AudioClip backgroundSound;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -29,15 +32,20 @@ public class LevelManager : MonoBehaviour
 
 		player = FindObjectOfType(System.Type.GetType("PlayerController")) as PlayerController;
 
+		// Ajoute le niveau en cours au playerPref comme non fini
 		if (!PlayerPrefsX.GetBool(Application.loadedLevelName, false))
 			PlayerPrefsX.SetBool(Application.loadedLevelName, false);
 
 		doorMessage.enabled = false;
+
+		audio.PlayOneShot(backgroundSound);
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		if (!audio.isPlaying)
+			audio.PlayOneShot(backgroundSound);
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -67,6 +75,7 @@ public class LevelManager : MonoBehaviour
 					string levelToLoad = "Level_" + nextLevel;
 					if (Application.CanStreamedLevelBeLoaded(levelToLoad))
 					{
+						// Marque le niveau comme terminé et chage le suivant
 						PlayerPrefsX.SetBool(Application.loadedLevelName, true);
 						Application.LoadLevel(levelToLoad);
 					}
