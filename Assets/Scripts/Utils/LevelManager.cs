@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if (!audio.isPlaying)
+		if (audio.isPlaying)
 			audio.PlayOneShot(backgroundSound);
 	}
 
