@@ -60,7 +60,6 @@ public class selectMenu : MonoBehaviour
 		// Permet de savoir l'objet qui est en colision avec le curseur et si un clic se fait, charge la scene du meme nom
 		if( Physics.Raycast( Camera.main.ScreenPointToRay( Input.mousePosition ), out hitInfo ) )
 		{
-			Debug.Log( "mouse is over object " + hitInfo.collider.name );
 			string levelName = hitInfo.collider.name;
 			if(Input.GetMouseButtonDown(0))
 				Application.LoadLevel(levelName);

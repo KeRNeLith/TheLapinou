@@ -32,9 +32,6 @@ public class Menu : MonoBehaviour
 		textureHeight = playButton.height;
 		xPosition = ( screenWidth / 2 ) - ( textureWidth / 2 );
 		yPosition = ( screnHeight / 2 ) - (textureHeight / 2 );
-
-		print (textureWidth);
-		print (textureHeight);
 	}
 	
 	// Update is called once per frame
