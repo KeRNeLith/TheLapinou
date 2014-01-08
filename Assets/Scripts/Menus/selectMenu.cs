@@ -98,14 +98,16 @@ public class selectMenu : MonoBehaviour
 			{
 				estHaut = true;
 				estMilieu = false;
+				Camera.main.transform.position = (new Vector3(0,-90,0) );
 			}
 			if (estBas)
 			{
 				estHaut = false;
 				estMilieu = true;
 				estBas =false;
+				Camera.main.transform.position = (new Vector3(0,0,0) );
 			}
-			Camera.main.transform.Rotate (new Vector3(-90,0,0) );
+
 		}
 		if(Input.GetKeyDown(KeyCode.DownArrow))	// la caméra doit regarder en bas
 		{
@@ -117,15 +119,15 @@ public class selectMenu : MonoBehaviour
 				estHaut=false;
 				estMilieu=false;
 				estBas=true;
+				Camera.main.transform.position = (new Vector3(0,0,0) );
 			}
 			if(estHaut)
 			{
 				estMilieu=true;
 				estHaut=false;
 				estBas = false;
+				Camera.main.transform.position = (new Vector3(0,0,0) );
 			}
-
-			Camera.main.transform.Rotate (new Vector3(90,0,0) );
 		}
 	}
 
@@ -173,6 +175,7 @@ public class selectMenu : MonoBehaviour
 			level.name = "Level_"+(i+1);
 			numLevel = "Level "+(i+1);
 			levelText.GetComponent<TextMesh>().text = numLevel;
+			levelText.GetComponent<TextMesh>().color = Color.yellow;
 		}
 	}
 
