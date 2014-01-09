@@ -23,31 +23,7 @@ public class Interface : MonoBehaviour {
 		gameOver.enabled = false;
 		gameOver.text = "Game Over";
 
-		// Barre de vie
-		// Placement de la barre de vie (remplissage) => en dehors de l'écran pour subir un offset par la suite pour simuler son mouvement
-		healthTexture.pixelInset = new Rect(-Screen.width/2 + 0.05f*Screen.width - healthTexture.texture.width,
-		                                    Screen.height/2 - 1.5f*healthTexture.texture.height,
-		                                    healthTexture.texture.width,
-		                                    healthTexture.texture.height);
-
-		// Placement de la barre de vie (contour)
-		healthTextureEmpty.pixelInset = new Rect(-Screen.width/2 + 0.05f*Screen.width,
-		                                         Screen.height/2 - 1.5f*healthTextureEmpty.texture.height,
-		                                         healthTextureEmpty.texture.width,
-		                                         healthTextureEmpty.texture.height);
-
-		// Barre d'énergie
-		// Placement de la barre de vie (remplissage) => en dehors de l'écran pour subir un offset par la suite pour simuler son mouvement
-		energyTexture.pixelInset = new Rect(-Screen.width/2 + 0.05f*Screen.width - energyTexture.texture.width,
-		                                    Screen.height/2 - 3f*energyTexture.texture.height,
-		                                    energyTexture.texture.width,
-		                                    energyTexture.texture.height);
-		
-		// Placement de la barre de vie (contour)
-		energyTextureEmpty.pixelInset = new Rect(-Screen.width/2 + 0.05f*Screen.width,
-		                                         Screen.height/2 - 3f*energyTextureEmpty.texture.height,
-		                                         energyTextureEmpty.texture.width,
-		                                         energyTextureEmpty.texture.height);
+		updateBarsPosition();
 	}
 	
 	// Update is called once per frame
@@ -58,6 +34,7 @@ public class Interface : MonoBehaviour {
 			gameOver.enabled = true;
 			Time.timeScale = 0;
 		}
+		updateBarsPosition();
 	}
 
 	void LateUpdate()
@@ -71,5 +48,34 @@ public class Interface : MonoBehaviour {
 		// en déterminant l'offset en pixel à appliquer à la texture de remplissage
 		int energyBarLenght = (int) (energyTexture.texture.width + 194*((double)player.getEnergy()/(double)player.getMaxEnergy()));
 		energyTexture.border = new RectOffset(energyBarLenght, 0, 0, 0);
+	}
+
+	void updateBarsPosition()
+	{
+		// Barre de vie
+		// Placement de la barre de vie (remplissage) => en dehors de l'écran pour subir un offset par la suite pour simuler son mouvement
+		healthTexture.pixelInset = new Rect(-Screen.width/2 + 0.05f*Screen.width - healthTexture.texture.width,
+		                                    Screen.height/2 - 1.5f*healthTexture.texture.height,
+		                                    healthTexture.texture.width,
+		                                    healthTexture.texture.height);
+		
+		// Placement de la barre de vie (contour)
+		healthTextureEmpty.pixelInset = new Rect(-Screen.width/2 + 0.05f*Screen.width,
+		                                         Screen.height/2 - 1.5f*healthTextureEmpty.texture.height,
+		                                         healthTextureEmpty.texture.width,
+		                                         healthTextureEmpty.texture.height);
+		
+		// Barre d'énergie
+		// Placement de la barre de vie (remplissage) => en dehors de l'écran pour subir un offset par la suite pour simuler son mouvement
+		energyTexture.pixelInset = new Rect(-Screen.width/2 + 0.05f*Screen.width - energyTexture.texture.width,
+		                                    Screen.height/2 - 3f*energyTexture.texture.height,
+		                                    energyTexture.texture.width,
+		                                    energyTexture.texture.height);
+		
+		// Placement de la barre de vie (contour)
+		energyTextureEmpty.pixelInset = new Rect(-Screen.width/2 + 0.05f*Screen.width,
+		                                         Screen.height/2 - 3f*energyTextureEmpty.texture.height,
+		                                         energyTextureEmpty.texture.width,
+		                                         energyTextureEmpty.texture.height);
 	}
 }
